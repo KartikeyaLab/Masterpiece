@@ -853,16 +853,14 @@
       </footer>
     </div>
     <script>
-      window.onload = () => {
+      setTimeout(() => {
         const loadingCircle = document.getElementById("loading-circle");
         const content = document.querySelector(".container_universal_hidden");
 
         if (loadingCircle) loadingCircle.classList.add("hidden");
 
-        setTimeout(() => {
-          if (content) content.classList.add("show");
-        }, 500);
-      };
+        if (content) content.classList.add("show");
+      }, 500);
     </script>
   </body>
 </html>
