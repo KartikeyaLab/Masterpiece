@@ -14,7 +14,6 @@
   </head>
 
   <style>
-    /* -------------------- Footer -------------------- */
     .footer {
       background: linear-gradient(to top, #1a1e36 0%, #252844 100%);
       color: #fff;
@@ -403,369 +402,467 @@
         aspect-ratio: 1 / 1;
       }
     }
+
+    #loading-circle {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #161a2a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease, visibility 0s 0.5s;
+    }
+
+    #loading-circle.hidden {
+      opacity: 0;
+      visibility: hidden;
+      z-index: -99999;
+    }
+
+    .elegant-spinner {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid #f8f3d9;
+      animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+        fadeIn 0.3s ease-in-out;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      50% {
+        transform: rotate(180deg);
+        animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .container_universal_hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.6s cubic-bezier(0.45, 0, 0.15, 1),
+        visibility 0s linear 1.6s;
+    }
+
+    .container_universal_hidden.show {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1.6s cubic-bezier(0.45, 0, 0.15, 1),
+        visibility 0s linear 0s;
+    }
   </style>
 
   <body>
-    <section class="main_section">
-      <div class="main_whole">
-        <div class="sparkle">
-          <div class="flex items-center justify-center mb-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles"
-            >
-              <path
-                d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
-              ></path>
-              <path d="M20 3v4"></path>
-              <path d="M22 5h-4"></path>
-              <path d="M4 17v2"></path>
-              <path d="M5 18H3"></path>
-            </svg>
+    <div id="loading-circle" class="loading-circle">
+      <div class="elegant-spinner"></div>
+    </div>
+
+    <div class="container_universal_hidden">
+      <section class="main_section">
+        <div class="main_whole">
+          <div class="sparkle">
+            <div class="flex items-center justify-center mb-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-sparkles"
+              >
+                <path
+                  d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+                ></path>
+                <path d="M20 3v4"></path>
+                <path d="M22 5h-4"></path>
+                <path d="M4 17v2"></path>
+                <path d="M5 18H3"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1>
+              For the<span style="color: var(--gold)"> Masterpiece.</span>
+            </h1>
+            <p class="subtitle">
+              For a sweet, kind, caring, weird, crazy, pure, understanding and a
+              beautiful soul!<br />
+            </p>
+            <p class="tagline">A collection crafted for you. By you.</p>
           </div>
         </div>
 
-        <div class="box">
-          <h1>For the<span style="color: var(--gold)"> Masterpiece.</span></h1>
-          <p class="subtitle">
-            For a sweet, kind, caring, weird, crazy, pure, understanding and a
-            beautiful soul!<br />
+        <!-- Scroll Down Indicator -->
+        <div class="scroll_down">
+          <div class="mouse-shape">
+            <div class="mouse-wheel"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="collection">
+        <div class="title">
+          <h2>Her Universe!</h2>
+          <p class="subtext">A beautiful world she created!</p>
+        </div>
+
+        <div class="cards">
+          <div class="imagebox">
+            <img src="Art/Cartoons.jpg" alt="Cartoons" />
+            <p>Nostalgia</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Ancient.jpeg" alt="Ancient" />
+            <p>Serene</p>
+          </div>
+
+          <div class="imagebox">
+            <img
+              src="Art/Another loose sktech.webp"
+              alt="Another loose sktech"
+            />
+            <p>Charming</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Apple.jpeg" alt="Apple" />
+            <p>Contrast</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Blue_lotus.jpeg" alt="Blue_lotus" />
+            <p>Lotus</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Colorful.jpeg" alt="Colorful" />
+            <p>Festive</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Combined image.jpeg" alt="Combined image" />
+            <p>Split</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Combined.webp" alt="Combined" />
+            <p>Vignettes</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Creative.jpeg" alt="Creative" />
+            <p>Folk</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Creativity.webp" alt="Creativity" />
+            <p>Imagination</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Cute.jpeg" alt="Cute" />
+            <p>Adorable</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Death.jpeg" alt="Death" />
+            <p>Death</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Different.jpeg" alt="Different" />
+            <p>Divine</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Digital.webp" alt="Digital" />
+            <p>Digital</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Eyes.jpeg" alt="Eyes" />
+            <p>Pain</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Fire and ice.jpeg" alt="Fire and ice" />
+            <p>Harmony</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Fire.jpeg" alt="Fire" />
+            <p>Flame</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Fish.jpeg" alt="Fish" />
+            <p>Pond</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Forest.jpeg" alt="Forest" />
+            <p>Forest</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/GREAT.jpeg" alt="GREAT" />
+            <p>Aspiration</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/GURU.jpeg" alt="GURU" />
+            <p>Sanskriti</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Ganesha.jpeg" alt="Ganesha" />
+            <p>Deity</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Godess red.jpeg" alt="Godess red" />
+            <p>Deity</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Godess.jpeg" alt="Godess" />
+            <p>Deity</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Godess_with_lotus.jpeg" alt="Godess_with_lotus" />
+            <p>Deity</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Harry Potter.jpeg" alt="Harry Potter" />
+            <p>Potter</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Her_eye.jpeg" alt="Her_eye" />
+            <p>Best!</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/INDIA.jpeg" alt="INDIA" />
+            <p>Progress</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Imagination.jpeg" alt="Imagination" />
+            <p>Abstract</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Kali maa!.jpeg" alt="Kali maa!" />
+            <p>Sacred</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Kali_ma.jpeg" alt="Kali_ma" />
+            <p>Sacred</p>
+          </div>
+
+          <div class="imagebox">
+            <img
+              src="Art/Krishna with two cow.jpeg"
+              alt="Krishna with two cow"
+            />
+            <p>Devotion</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Krishna.jpeg" alt="Krishna" />
+            <p>Mystical</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Lady.jpeg" alt="Lady" />
+            <p>Chic</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Land.jpeg" alt="Land" />
+            <p>Countryside</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Lavender.jpeg" alt="Lavender" />
+            <p>Lavender</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Loose Sketch best.webp" alt="Loose Sketch best" />
+            <p>Cottage</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Loose_Sketch.webp" alt="Loose_Sketch" />
+            <p>Café</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Lotus with birds.jpeg" alt="Lotus with birds" />
+            <p>Elegance</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Lotus.jpeg" alt="Lotus" />
+            <p>Auspicious</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Love.jpeg" alt="Love" />
+            <p>Love</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Midnight.jpg" alt="Midnight" />
+            <p>Midnight</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Ocean.jpg" alt="Ocean" />
+            <p>Ocean</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Old.jpeg" alt="Old" />
+            <p>Warmth</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Pen.jpeg" alt="Pen" />
+            <p>Textured</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/RED_YELLO.jpeg" alt="RED_YELLO" />
+            <p>Colours</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Random.jpeg" alt="Random" />
+            <p>Perspective</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Rapunzel.jpeg" alt="Rapunzel" />
+            <p>Rapunzel</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Sanam_Teri_Kasam.jpeg" alt="Sanam_Teri_Kasam" />
+            <p>Creative</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Simplicity.jpeg" alt="Simplicity" />
+            <p>Vibrant</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Sketch.webp" alt="Sketch" />
+            <p>Sketch</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Something_somthing.jpeg" alt="Something_somthing" />
+            <p>Narnia</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Starry Nights.jpeg" alt="Starry Nights" />
+            <p>Homage</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Three.jpeg" alt="Three" />
+            <p>Soulful</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Watercolor.jpeg" alt="Watercolor" />
+            <p>Home</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/We Bare Bears.jpeg" alt="We Bare Bears" />
+            <p>Bears</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Wow.jpeg" alt="Wow" />
+            <p>Warmth</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/Yup.jpeg" alt="Yup" />
+            <p>Saraswati</p>
+          </div>
+
+          <div class="imagebox">
+            <img src="Art/watercolored house.jpeg" alt="watercolored house" />
+            <p>Landscape</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-logo">
+            <h2>For the <span>Masterpiece</span></h2>
+          </div>
+          <p class="footer-text">Herself.</p>
+
+          <p class="footer-copy">
+            © 2025 For the Masterpiece. All rights unlocked, for you!
           </p>
-          <p class="tagline">A collection crafted for you. By you.</p>
         </div>
-      </div>
+      </footer>
+    </div>
+    <script>
+      window.onload = () => {
+        const loadingCircle = document.getElementById("loading-circle");
+        const content = document.querySelector(".container_universal_hidden");
 
-      <!-- Scroll Down Indicator -->
-      <div class="scroll_down">
-        <div class="mouse-shape">
-          <div class="mouse-wheel"></div>
-        </div>
-      </div>
-    </section>
+        if (loadingCircle) loadingCircle.classList.add("hidden");
 
-    <section class="collection">
-      <div class="title">
-        <h2>Her Universe!</h2>
-        <p class="subtext">A beautiful world she created!</p>
-      </div>
-
-      <div class="cards">
-        <div class="imagebox">
-          <img src="Art/Cartoons.jpg" alt="Cartoons" />
-          <p>Nostalgia</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Ancient.jpeg" alt="Ancient" />
-          <p>Serene</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Another loose sktech.webp" alt="Another loose sktech" />
-          <p>Charming</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Apple.jpeg" alt="Apple" />
-          <p>Contrast</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Blue_lotus.jpeg" alt="Blue_lotus" />
-          <p>Lotus</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Colorful.jpeg" alt="Colorful" />
-          <p>Festive</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Combined image.jpeg" alt="Combined image" />
-          <p>Split</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Combined.webp" alt="Combined" />
-          <p>Vignettes</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Creative.jpeg" alt="Creative" />
-          <p>Folk</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Creativity.webp" alt="Creativity" />
-          <p>Imagination</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Cute.jpeg" alt="Cute" />
-          <p>Adorable</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Death.jpeg" alt="Death" />
-          <p>Death</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Different.jpeg" alt="Different" />
-          <p>Divine</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Digital.webp" alt="Digital" />
-          <p>Digital</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Eyes.jpeg" alt="Eyes" />
-          <p>Pain</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Fire and ice.jpeg" alt="Fire and ice" />
-          <p>Harmony</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Fire.jpeg" alt="Fire" />
-          <p>Flame</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Fish.jpeg" alt="Fish" />
-          <p>Pond</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Forest.jpeg" alt="Forest" />
-          <p>Forest</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/GREAT.jpeg" alt="GREAT" />
-          <p>Aspiration</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/GURU.jpeg" alt="GURU" />
-          <p>Sanskriti</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Ganesha.jpeg" alt="Ganesha" />
-          <p>Deity</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Godess red.jpeg" alt="Godess red" />
-          <p>Deity</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Godess.jpeg" alt="Godess" />
-          <p>Deity</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Godess_with_lotus.jpeg" alt="Godess_with_lotus" />
-          <p>Deity</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Harry Potter.jpeg" alt="Harry Potter" />
-          <p>Potter</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Her_eye.jpeg" alt="Her_eye" />
-          <p>Best!</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/INDIA.jpeg" alt="INDIA" />
-          <p>Progress</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Imagination.jpeg" alt="Imagination" />
-          <p>Abstract</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Kali maa!.jpeg" alt="Kali maa!" />
-          <p>Sacred</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Kali_ma.jpeg" alt="Kali_ma" />
-          <p>Sacred</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Krishna with two cow.jpeg" alt="Krishna with two cow" />
-          <p>Devotion</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Krishna.jpeg" alt="Krishna" />
-          <p>Mystical</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Lady.jpeg" alt="Lady" />
-          <p>Chic</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Land.jpeg" alt="Land" />
-          <p>Countryside</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Lavender.jpeg" alt="Lavender" />
-          <p>Lavender</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Loose Sketch best.webp" alt="Loose Sketch best" />
-          <p>Cottage</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Loose_Sketch.webp" alt="Loose_Sketch" />
-          <p>Café</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Lotus with birds.jpeg" alt="Lotus with birds" />
-          <p>Elegance</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Lotus.jpeg" alt="Lotus" />
-          <p>Auspicious</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Love.jpeg" alt="Love" />
-          <p>Love</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Midnight.jpg" alt="Midnight" />
-          <p>Midnight</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Ocean.jpg" alt="Ocean" />
-          <p>Ocean</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Old.jpeg" alt="Old" />
-          <p>Warmth</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Pen.jpeg" alt="Pen" />
-          <p>Textured</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/RED_YELLO.jpeg" alt="RED_YELLO" />
-          <p>Colours</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Random.jpeg" alt="Random" />
-          <p>Perspective</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Rapunzel.jpeg" alt="Rapunzel" />
-          <p>Rapunzel</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Sanam_Teri_Kasam.jpeg" alt="Sanam_Teri_Kasam" />
-          <p>Creative</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Simplicity.jpeg" alt="Simplicity" />
-          <p>Vibrant</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Sketch.webp" alt="Sketch" />
-          <p>Sketch</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Something_somthing.jpeg" alt="Something_somthing" />
-          <p>Narnia</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Starry Nights.jpeg" alt="Starry Nights" />
-          <p>Homage</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Three.jpeg" alt="Three" />
-          <p>Soulful</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Watercolor.jpeg" alt="Watercolor" />
-          <p>Home</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/We Bare Bears.jpeg" alt="We Bare Bears" />
-          <p>Bears</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Wow.jpeg" alt="Wow" />
-          <p>Warmth</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/Yup.jpeg" alt="Yup" />
-          <p>Saraswati</p>
-        </div>
-
-        <div class="imagebox">
-          <img src="Art/watercolored house.jpeg" alt="watercolored house" />
-          <p>Landscape</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-logo">
-          <h2>For the <span>Masterpiece</span></h2>
-        </div>
-        <p class="footer-text">Herself.</p>
-
-        <p class="footer-copy">
-          © 2025 For the Masterpiece. All rights unlocked, for you!
-        </p>
-      </div>
-    </footer>
+        setTimeout(() => {
+          if (content) content.classList.add("show");
+        }, 500);
+      };
+    </script>
   </body>
 </html>
