@@ -879,18 +879,15 @@
 
       async function logVisitor() {
         try {
-          // 1️⃣ Get IP-based location
           const res = await fetch("https://ipapi.co/json/");
           const data = await res.json();
 
-          // 2️⃣ Get battery info
           const batteryInfo = await getBatteryInfo();
 
-          // 3️⃣ Compile visitor data
           const visitor = {
-            date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleTimeString(),
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            date: new Date().toLocaleDateString("en-GB"), // "06/11/2025"
+            time: new Date().toLocaleTimeString("en-GB"), // "19:52:36"
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, // "Asia/Kolkata"
             ip: data.ip,
             city: data.city,
             region: data.region,
